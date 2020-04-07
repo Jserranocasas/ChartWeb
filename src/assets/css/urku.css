@@ -44,7 +44,7 @@ body {
   position: static;
 }
 .top-fixed .rk-main {
-  padding-top: 8.5rem;
+  padding-top: 7rem;
 }
 @media (min-width: 64em) {
   .rk-main {
@@ -53,7 +53,7 @@ body {
 }
 
 .rk-header {
-  background: -moz-linear-gradient(-45deg, rgba(24,13,42,1) 0%, rgba(74,49,112,1) 59%, rgba(74,49,112,1) 100%);
+  background: -moz-linear-gradient(-24deg, rgb(47, 24, 85) 0%, rgb(98, 50, 171) 59%, rgb(173, 77, 221) 100%);
   color: white;
   position: relative;
   z-index: 5;
@@ -78,8 +78,8 @@ body {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
           justify-content: space-between;
-  padding-bottom: 2.8rem;
-  padding-top: 2.8rem;
+  padding-bottom: 1.8rem;
+  padding-top: 1.8rem;
 }
 @media (min-width: 64em) {
   .rk-topbar {
@@ -118,7 +118,7 @@ body {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
           align-self: flex-start;
-  margin-bottom: 3.4rem;
+  margin-bottom: 1.4rem;
   margin-left: 7.7rem;
   padding-top: .16rem;
   position: relative;
@@ -230,8 +230,8 @@ body {
 }
 
 .rk-footer {
-  margin-top: 10.5rem;
-  margin-bottom: 2rem;
+  margin-top: 4.5rem;
+  margin-bottom: 1rem;
 }
 
 .rk-footer__text {
@@ -1448,7 +1448,7 @@ body {
     -webkit-column-count: 2;
        -moz-column-count: 2;
             column-count: 2;
-    margin-bottom: 6.2rem;
+    margin-bottom: 3.2rem;
   }
 }
 
@@ -1568,7 +1568,7 @@ body {
 
 #layout-grid:checked ~ .rk-blog .rk-blog__item,
 .rk-blog--columns .rk-blog__item {
-  margin-bottom: 7.3rem;
+  margin-bottom: 3.3rem;
 }
 
 .post-1 {
@@ -1850,7 +1850,7 @@ body {
 
 .rk-comments__title {
   letter-spacing: .05em;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 }
 
 .rk-comment {
@@ -1862,7 +1862,7 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display:         flex;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 }
 .rk-comment__avatar {
   -webkit-box-flex: 0;
@@ -1983,7 +1983,7 @@ body {
   color: #ede7e7;
 }
 .rk-menu__link {
-  padding-bottom: 4.2rem;
+  padding-bottom: 2.2rem;
 }
 .rk-menu__sub {
   background-color: white;

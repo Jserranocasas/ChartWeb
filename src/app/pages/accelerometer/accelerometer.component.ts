@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import { MeasurementsService } from '../../services/measurements.service';
+import { AccelerometerService } from '../../services/measurements.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -11,7 +11,7 @@ export class AccelerometerComponent implements OnInit, AfterViewInit {
 
   subscription: Subscription;
 
-  constructor(private dataServiceChart: MeasurementsService) {
+  constructor(private dataServiceChart: AccelerometerService) {
     this.subscription = this.dataServiceChart.dataSetChanged$.subscribe(
       dataSet => this.chart.data(this.dataServiceChart.getData(dataSet))
     );

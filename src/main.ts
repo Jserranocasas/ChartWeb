@@ -9,6 +9,7 @@ import 'anychart/dist/js/anychart-ui.min.js';
 import 'anychart/dist/js/anychart-exports.min.js';
 import 'anychart/dist/js/anychart-cartesian-3d.min.js';
 import 'anychart/dist/themes/dark_provence.min.js';
+import 'anychart/dist/themes/dark_glamour.min.js';
 
 if (environment.production) {
   enableProdMode();

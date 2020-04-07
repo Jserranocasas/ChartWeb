@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MeasurementsService } from './services/measurements.service';
+import { AccelerometerService } from './services/measurements.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import { MeasurementsService } from './services/measurements.service';
 export class AppComponent {
   title = 'ChartWeb';
 
-  constructor(public measurementsService: MeasurementsService){
+  constructor(public measurementsService: AccelerometerService){
 
   }
 }
