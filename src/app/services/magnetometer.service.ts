@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AccelerometerService {
+export class MagnetometerService {
 
   // Observable string stream
   private dataSetChangeSource = new Subject<string>();
@@ -30,11 +30,8 @@ export class AccelerometerService {
   private loadMeasurements(){
     this.http.get('https://awareapp-fee69.firebaseio.com/Measurements.json')
       .subscribe( (resp: any) => {
-        for (const[key, value] of Object.entries(resp['HUAWEI JSN-L21'].accelerometer)) {
-          const oo = {dateKey: key, x: value['x'], y: value['y'], z: value['z']};
-          this.dataSetChart.append(oo);
-          this.dataChart.push(oo);
-          console.log(oo);
+        for (const[key, value] of Object.entries(resp['HUAWEI JSN-L21'].magnetometer)) {
+          this.dataSetChart.append({dateKey: key, x: value['x'], y: value['y'], z: value['z']});
         }
       });
   }

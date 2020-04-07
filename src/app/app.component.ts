@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AccelerometerService } from './services/measurements.service';
+import { AccelerometerService } from './services/accelerometer.service';
+import { LightService } from './services/light.service';
 
 @Component({
   selector: 'app-root',
