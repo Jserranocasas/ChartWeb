@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { DeviceService } from 'src/app/services/singleton.service';
 import { LightService } from '../../services/light.service';
 import { Subscription } from 'rxjs';
 
@@ -11,7 +12,7 @@ export class LightComponent implements OnInit, AfterViewInit {
 
   subscription: Subscription;
 
-  constructor(private dataServiceChart: LightService) {
+  constructor(private dataServiceChart: LightService, private singleton: DeviceService) {
     this.subscription = this.dataServiceChart.dataSetChanged$.subscribe(
       dataSet => this.chart.data(this.dataServiceChart.getData(dataSet))
     );
@@ -46,5 +47,15 @@ export class LightComponent implements OnInit, AfterViewInit {
 
     // draw the legend and chart
     this.chart.draw();
+  }
+
+  ngChangeToJSN(){
+    this.singleton.DeviceJSN();
+    this.dataServiceChart.updateDataSet();
+  }
+
+  ngChangeToPOT(){
+    this.singleton.DevicePOT();
+    this.dataServiceChart.updateDataSet();
   }
 }

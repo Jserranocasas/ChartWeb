@@ -16,6 +16,8 @@ import { GyroscopeComponent } from './pages/gyroscope/gyroscope.component';
 import { MagnetometerComponent } from './pages/magnetometer/magnetometer.component';
 import { RotationComponent } from './pages/rotation/rotation.component';
 
+import { DeviceService } from './services/singleton.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,7 @@ import { RotationComponent } from './pages/rotation/rotation.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DeviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { DeviceService } from 'src/app/services/singleton.service';
 import { BatteryService } from '../../services/battery.service';
 import { Subscription } from 'rxjs';
 
@@ -11,7 +12,7 @@ export class BatteryComponent implements OnInit, AfterViewInit {
 
   subscription: Subscription;
 
-  constructor(private dataServiceChart: BatteryService) {
+  constructor(private dataServiceChart: BatteryService,  private singleton: DeviceService) {
     this.subscription = this.dataServiceChart.dataSetChanged$.subscribe(
       dataSet => this.chart1.data(this.dataServiceChart.getData(dataSet))
     );
@@ -76,5 +77,16 @@ export class BatteryComponent implements OnInit, AfterViewInit {
 
     // draw the legend and chart
     this.chart2.draw();
+  }
+
+
+  ngChangeToJSN(){
+    this.singleton.DeviceJSN();
+    this.dataServiceChart.updateDataSet();
+  }
+
+  ngChangeToPOT(){
+    this.singleton.DevicePOT();
+    this.dataServiceChart.updateDataSet();
   }
 }

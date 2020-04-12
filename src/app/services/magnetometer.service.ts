@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DeviceService } from './singleton.service';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -23,14 +24,24 @@ export class MagnetometerService {
     data3: this.dataSetChart.mapAs({x: ['dateKey'], value: ['z']})
   };
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient, private singleton: DeviceService){
       this.loadMeasurements();
   }
 
+  public updateDataSet() {
+    let i;
+    const size = this.dataSetChart.getRowsCount();
+    for (i = 0; i < size; i++){
+      this.dataSetChart.remove(this.dataSetChart.getRowsCount() - 1);
+    }
+
+    this.loadMeasurements();
+  }
+  
   private loadMeasurements(){
     this.http.get('https://awareapp-fee69.firebaseio.com/Measurements.json')
       .subscribe( (resp: any) => {
-        for (const[key, value] of Object.entries(resp['HUAWEI JSN-L21'].magnetometer)) {
+        for (const[key, value] of Object.entries(resp[this.singleton.DeviceCurrent].magnetometer)) {
           this.dataSetChart.append({dateKey: key, x: value['x'], y: value['y'], z: value['z']});
         }
       });

@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { DeviceService } from 'src/app/services/singleton.service';
 import { RotationService } from '../../services/rotation.service';
 import { Subscription } from 'rxjs';
 
@@ -11,7 +12,7 @@ export class RotationComponent implements OnInit, AfterViewInit {
 
   subscription: Subscription;
 
-  constructor(private dataServiceChart: RotationService) {
+  constructor(private dataServiceChart: RotationService, private singleton: DeviceService) {
     this.subscription = this.dataServiceChart.dataSetChanged$.subscribe(
       dataSet => this.chart.data(this.dataServiceChart.getData(dataSet))
     );
@@ -52,5 +53,15 @@ export class RotationComponent implements OnInit, AfterViewInit {
 
     // draw the legend and chart
     this.chart.draw();
+  }
+
+  ngChangeToJSN(){
+    this.singleton.DeviceJSN();
+    this.dataServiceChart.updateDataSet();
+  }
+
+  ngChangeToPOT(){
+    this.singleton.DevicePOT();
+    this.dataServiceChart.updateDataSet();
   }
 }

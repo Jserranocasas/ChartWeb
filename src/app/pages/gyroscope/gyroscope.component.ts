@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { GyroscopeService } from '../../services/gyroscope.service';
+import { DeviceService } from 'src/app/services/singleton.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -11,7 +12,7 @@ export class GyroscopeComponent implements OnInit, AfterViewInit {
 
   subscription: Subscription;
 
-  constructor(private dataServiceChart: GyroscopeService) {
+  constructor(private dataServiceChart: GyroscopeService,  private singleton: DeviceService) {
     this.subscription = this.dataServiceChart.dataSetChanged$.subscribe(
       dataSet => this.chart.data(this.dataServiceChart.getData(dataSet))
     );
@@ -52,5 +53,16 @@ export class GyroscopeComponent implements OnInit, AfterViewInit {
 
     // draw the legend and chart
     this.chart.draw();
+  }
+
+
+  ngChangeToJSN(){
+    this.singleton.DeviceJSN();
+    this.dataServiceChart.updateDataSet();
+  }
+
+  ngChangeToPOT(){
+    this.singleton.DevicePOT();
+    this.dataServiceChart.updateDataSet();
   }
 }
